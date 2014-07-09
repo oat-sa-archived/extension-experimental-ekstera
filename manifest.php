@@ -29,7 +29,9 @@ return array(
     'version' => '1.0.0',
 	'author' => 'Open Assessment Technologies',
 	'requires' => array(
-	    'irtTest' => '1.0.0'
+	    'irtTest' => '1.0.0',
+	    'kutimo' => '1.0.0',
+	    'taoQtiItem' => '>=2.6'
 	),
 	'install' => array(
 		'rdf' => array(
@@ -38,14 +40,17 @@ return array(
 		'checks' => array(
 		),
 	),
+    'local'	=> array(
+        'php'	=> array(
+            dirname(__FILE__).'/install/local/addPools.php'
+        )
+    ),
     'autoload' => array (
         'psr-4' => array(
-            'oat\\irtRandomTest\\' => dirname(__FILE__).DIRECTORY_SEPARATOR
+            'oat\\ekstera\\' => dirname(__FILE__).DIRECTORY_SEPARATOR
         ),
     ),
-	'managementRole' => 'http://www.tao.lu/Ontologies/TAOTest.rdf#IRTtestManager',
-    'acl' => array(
-    ),    
-	'constants' => array(
-	)
+	'managementRole' => 'http://www.tao.lu/Ontologies/TAOTest.rdf#EksteraManager',
+    'acl' => array(),    
+	'constants' => array()
 );
