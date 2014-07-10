@@ -24,12 +24,40 @@ use \oat\ekstera\model\EksteraModel;
 use tao_models_classes_service_FileStorage;
 use tao_models_classes_service_StorageDirectory;
 
+/**
+ * This implementation of the Ekstera Test Model considers the Item Pool as a series of
+ * slices where a single item will be taken randomly from each of the slices, to constitute
+ * the flow of Items to be taken by the candidate.
+ * 
+ * For instance, consider an Item Pool of 50 items, having Q1, Q2, Q3, ... Q50 identifiers and
+ * a value of 5 for the slice_size configuration parameter. The Test to be taken will consist of
+ * 10 slices (50 / 5). In each slice, an Item to be taken by the candidate is selected randomly.
+ * As a result, the candidate might take the following sequences of Items:
+ * 
+ * * Q4, Q9, Q13, Q19, Q21, Q28, Q34, Q36, Q41, Q48
+ * * Q1, Q10, Q12, Q20, Q22, Q26, Q31, Q39, Q45, Q50
+ * * etc ... 
+ * 
+ * @author Jérôme Bogaerts <jerome@taotesting.com>
+ *
+ */
 class SlicedModel extends EksteraModel {
 
+    /**
+     * Instantiate the Plan to be respected by the Test in order to make a SlicedPlan object to
+     * be used by the IRT Test Driver.
+     * 
+     * @return oat\ekstera\model\sliced\SlicedPlan
+     */
     protected function instantiateRoutingPlan(tao_models_classes_service_StorageDirectory $directory) {
         return new SlicedPlan($directory);
     }
     
+    /**
+     * Create an appropriate ItemMapper implementation for the Sliced Model.
+     * 
+     * @return oat\ekstera\model\sliced\SlicedItemMapper
+     */
     protected function createItemMapper()
     {
         return new SlicedItemMapper();

@@ -1,5 +1,5 @@
 <?php
-/*  
+/**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; under version 2
@@ -14,26 +14,54 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  * 
- * Copyright (c) 2013 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
+ * Copyright (c) 2014 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  *               
- * 
  */
 
 use oat\taoQtiItem\model\qti\ImportService;
+use oat\irtTest\model\TestContent;
+use core_kernel_classes_Class;
+use \common_Logger;
 
-?>
-<?php
 $itemClass	= taoItems_models_classes_ItemsService::singleton()->getRootClass();
 
-$files = array('pool-integers-10-local.zip' => $itemClass->createSubclass('Int 10 - Local'),
-                'pool-integers-10-dummyremote.zip' => $itemClass->createSubclass('Int10 - Dummy Remote'));
+$files = array('pool-integers-5-local.zip' => $itemClass->createSubclass('Int 5 - Local'),
+                'pool-integers-5-dummyremote.zip' => $itemClass->createSubclass('Int 5 - Dummy Remote'),
+                'pool-integers-10-local.zip' => $itemClass->createSubclass('Int 10 - Local'),
+                'pool-integers-10-dummyremote.zip' => $itemClass->createSubclass('Int 10 - Dummy Remote'),
+                'pool-integers-15-local.zip' => $itemClass->createSubclass('Int 15 - Local'),
+                'pool-integers-15-dummyremote.zip' => $itemClass->createSubclass('Int 15 - Dummy Remote'),
+                'pool-integers-20-local.zip' => $itemClass->createSubclass('Int 20 - Local'),
+                'pool-integers-20-dummyremote.zip' => $itemClass->createSubclass('Int 20 - Dummy Remote'),
+                'pool-integers-50-local.zip' => $itemClass->createSubclass('Int 50 - Local'),
+                'pool-integers-50-dummyremote.zip' => $itemClass->createSubclass('Int 50 - Dummy Remote'));
+
+$testModels = array(array('Sliced', INSTANCE_TESTMODEL_EKSTERA_SLICED, 'oat\\ekstera\\model\\sliced\\SlicedModel'));
 
 $service = ImportService::singleton();
+$testClass = new core_kernel_classes_Class(TAO_TEST_CLASS);
+$testModelProperty = new core_kernel_classes_Property(PROPERTY_TEST_TESTMODEL);
+$testContentProperty = new core_kernel_classes_Property(TEST_TESTCONTENT_PROP);
+$irtTestContentClass = new core_kernel_classes_Class(CLASS_IRT_TEST_CONTENT);
+$irtTestContentProperty = new core_kernel_classes_Property(PROPERTY_IRT_TEST_CONTENT_ITEMS);
 
 foreach ($files as $file => $clazz) {
     try {
         $path = dirname(__FILE__) . DIRECTORY_SEPARATOR . $file;
         $service->importQTIPACKFile($path, $clazz, false);
+        
+        // Get all the instances of $clazz and bind them to a test
+        // for all available ekstera test models.
+        foreach ($testModels as $testModel)
+        {
+            $irtTestContentResource = $irtTestContentClass->createInstance('IRT Test Content');
+            $testResource = $testClass->createInstance(ucfirst(str_replace('.zip', '', $file)) . ' - ' . $testModel[0]);
+            $testResource->setPropertyValue($testContentProperty, $irtTestContentResource);
+            $testResource->setPropertyValue($testModelProperty, $testModel[1]);
+            
+            $model = new $testModel[2]();
+            $model->prepareContent($testResource, $clazz->getInstances());
+        }
     }
     catch (Exception $e){
         common_Logger::e("An error occured while importing an itemPool '${file}': " . $e->getMessage());

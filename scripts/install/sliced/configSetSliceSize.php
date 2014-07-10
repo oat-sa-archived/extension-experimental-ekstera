@@ -17,28 +17,7 @@
  * Copyright (c) 2014 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  *
  */
+use common_ext_ExtensionsManager;
 
-namespace oat\ekstera\model;
-
-use core_kernel_classes_Resource;
-
-/**
- * An ItemMapper aims at mapping Item Resource to Item identifiers. This is
- * useful at test compilation time to generate string identifiers for items
- * that will be used accross the different components of a Test Model
- * implementation.
- * 
- * @author Jérôme Bogaerts <jerome@taotesting.com>
- *
- */
-interface ItemMapper
-{
-    /**
-     * Map a given Generis Resource representing an Item in the TAO platform
-     * into a string identifier.
-     * 
-     * @param core_kernel_classes_Resource $item
-     * @return string
-     */
-    public function map(core_kernel_classes_Resource $item);
-}
+$ext = common_ext_ExtensionsManager::singleton()->getExtensionById('ekstera');
+$ext->setConfig('sliced.slice_size', 5);
