@@ -3,7 +3,7 @@
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; under version 2
- * of the License (non-upgradable).
+ * of the License (non-upgradable). 
  * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -25,6 +25,7 @@ use \common_Logger;
 
 $itemClass	= taoItems_models_classes_ItemsService::singleton()->getRootClass();
 
+// Defines possible pools.
 $files = array('pool-integers-5-local.zip' => $itemClass->createSubclass('Int 5 - Local'),
                 'pool-integers-5-dummyremote.zip' => $itemClass->createSubclass('Int 5 - Dummy Remote'),
                 'pool-integers-10-local.zip' => $itemClass->createSubclass('Int 10 - Local'),
