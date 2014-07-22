@@ -20,8 +20,6 @@
 
 use oat\taoQtiItem\model\qti\ImportService;
 use oat\irtTest\model\TestContent;
-use core_kernel_classes_Class;
-use \common_Logger;
 
 $itemClass	= taoItems_models_classes_ItemsService::singleton()->getRootClass();
 

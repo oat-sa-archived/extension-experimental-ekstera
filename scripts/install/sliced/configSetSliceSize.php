@@ -17,7 +17,5 @@
  * Copyright (c) 2014 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  *
  */
-use common_ext_ExtensionsManager;
-
 $ext = common_ext_ExtensionsManager::singleton()->getExtensionById('ekstera');
 $ext->setConfig('sliced.slice_size', 5);
