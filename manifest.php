@@ -38,7 +38,7 @@ return array(
 		    dirname(__FILE__).DIRECTORY_SEPARATOR.'install'.DIRECTORY_SEPARATOR.'ontology'.DIRECTORY_SEPARATOR.'ekstera.rdf'
 		),
         'php'	=> array(
-            dirname(__FILE__) . '/scripts/install/sliced/configSetSliceSize.php',
+            dirname(__FILE__) . '/scripts/install/sliced/configure.php'
         )
 	),
     'local'	=> array(

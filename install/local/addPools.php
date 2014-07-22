@@ -24,16 +24,18 @@ use oat\irtTest\model\TestContent;
 $itemClass	= taoItems_models_classes_ItemsService::singleton()->getRootClass();
 
 // Defines possible pools.
-$files = array('pool-integers-5-local.zip' => $itemClass->createSubclass('Int 5 - Local'),
-                'pool-integers-5-dummyremote.zip' => $itemClass->createSubclass('Int 5 - Dummy Remote'),
-                'pool-integers-10-local.zip' => $itemClass->createSubclass('Int 10 - Local'),
-                'pool-integers-10-dummyremote.zip' => $itemClass->createSubclass('Int 10 - Dummy Remote'),
-                'pool-integers-15-local.zip' => $itemClass->createSubclass('Int 15 - Local'),
-                'pool-integers-15-dummyremote.zip' => $itemClass->createSubclass('Int 15 - Dummy Remote'),
-                'pool-integers-20-local.zip' => $itemClass->createSubclass('Int 20 - Local'),
-                'pool-integers-20-dummyremote.zip' => $itemClass->createSubclass('Int 20 - Dummy Remote'),
-                'pool-integers-50-local.zip' => $itemClass->createSubclass('Int 50 - Local'),
-                'pool-integers-50-dummyremote.zip' => $itemClass->createSubclass('Int 50 - Dummy Remote'));
+$files = array();
+// $files['pool-integers-5-local.zip'] = $itemClass->createSubclass('Int 5 - Local');
+// $files['pool-integers-5-dummy.zip'] = $itemClass->createSubclass('Int 5 - Dummy');
+$files['pool-integers-5-remote.zip'] = $itemClass->createSubclass('Int 5 - Remote');
+// $files['pool-integers-10-local.zip'] = $itemClass->createSubclass('Int 10 - Local');
+// $files['pool-integers-10-dummy.zip'] = $itemClass->createSubclass('Int 10 - Dummy');
+// $files['pool-integers-15-local.zip'] = $itemClass->createSubclass('Int 15 - Local');
+// $files['pool-integers-15-dummy.zip'] = $itemClass->createSubclass('Int 15 - Dummy');
+// $files['pool-integers-20-local.zip'] = $itemClass->createSubclass('Int 20 - Local');
+// $files['pool-integers-20-dummy.zip'] = $itemClass->createSubclass('Int 20 - Dummy');
+// $files['pool-integers-50-local.zip'] = $itemClass->createSubclass('Int 50 - Local');
+// $files['pool-integers-50-dummy.zip'] = $itemClass->createSubclass('Int 50 - Dummy');
 
 $testModels = array(array('Sliced', INSTANCE_TESTMODEL_EKSTERA_SLICED, 'oat\\ekstera\\model\\sliced\\SlicedModel'));
 
