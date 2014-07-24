@@ -47,6 +47,7 @@ class SlicedModel extends EksteraModel {
      * Instantiate the Plan to be respected by the Test in order to make a SlicedPlan object to
      * be used by the IRT Test Driver.
      * 
+     * @param tao_models_classes_service_StorageDirectory $directory
      * @return oat\ekstera\model\sliced\SlicedPlan
      */
     protected function instantiateRoutingPlan(tao_models_classes_service_StorageDirectory $directory) {

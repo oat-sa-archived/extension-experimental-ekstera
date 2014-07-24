@@ -91,8 +91,6 @@ class SlicedRoute extends Route
         $sliceSize = $this->retrieveSliceSize();
         $currentSlice = $this->getCurrentSlice();
         $sliceCount = intval(floor($poolSize / $sliceSize));
-        
-        \common_Logger::i("Current slice is #${currentSlice} -> Slice count is ${sliceCount}. -> Slice size is ${sliceSize}.");
 
         if ($currentSlice === $sliceCount) {
             // Last slice taken by the candidate -> end of test.
@@ -102,7 +100,6 @@ class SlicedRoute extends Route
             $lowerBound = $currentSlice * $sliceSize;
             $upperBound = $lowerBound + $sliceSize - 1;
             $rand = mt_rand($lowerBound, $upperBound);
-            \common_Logger::i("Current slice is #${currentSlice} -> Random number in slice is ${rand} from range [${lowerBound},${upperBound}].");
             
             $itemId = strval($rand);
             $this->setCurrentSlice($currentSlice + 1);

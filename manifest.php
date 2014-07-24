@@ -35,10 +35,12 @@ return array(
 	),
 	'install' => array(
 		'rdf' => array(
-		    dirname(__FILE__).DIRECTORY_SEPARATOR.'install'.DIRECTORY_SEPARATOR.'ontology'.DIRECTORY_SEPARATOR.'ekstera.rdf'
+		    dirname(__FILE__) . '/install/ontology/ekstera-sliced.rdf',
+		    dirname(__FILE__) . '/install/ontology/ekstera-remote.rdf'
 		),
         'php'	=> array(
-            dirname(__FILE__) . '/scripts/install/sliced/configure.php'
+            dirname(__FILE__) . '/scripts/install/sliced/configure.php',
+            dirname(__FILE__) . '/scripts/install/remote/configure.php'
         )
 	),
     'local'	=> array(

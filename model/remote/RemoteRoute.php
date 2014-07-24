@@ -18,28 +18,45 @@
  *
  */
 
-namespace oat\ekstera\model;
+namespace oat\ekstera\model\remote;
 
-use core_kernel_classes_Resource;
+use oat\irtTest\model\routing\Plan;
+use oat\irtTest\model\routing\simple\Route;
 
 /**
- * An ItemMapper aims at mapping Item Resource to Item identifiers. This is
- * useful at test compilation time to generate string identifiers for items
- * that will be used accross the different components of a Test Model
- * implementation.
  * 
  * @author Jérôme Bogaerts <jerome@taotesting.com>
+ * @see oat\ekstera\model\remote\RemoteModel
  *
  */
-interface ItemMapper
+class RemoteRoute extends Route 
 {
     /**
-     * Map a given Generis Resource representing an Item in the TAO platform
-     * into a string identifier.
+     * Create a new SlicedRoute object.
      * 
-     * @param core_kernel_classes_Resource $item
-     * @return string
-     * @throws \oat\ekstera\model\ItemMappingException If something goes wrong during the mapping process.
+     * @param oat\irtTest\model\routing\Plan $plan The Plan to be respected by the Route.
      */
-    public function map(core_kernel_classes_Resource $item);
+    public function __construct(Plan $plan)
+    {
+        parent::__construct($plan);
+    }
+    
+    /**
+     * 
+     * @param string $lastItemScore The score to the last Item taken by the candidate (optional for the first item to be taken).
+     * @return string The identifier of the next item to be taken or an empty string if it's the end of the test.
+     */
+    public function getNextItem($lastItemScore = '')
+    {
+        // CURL HERE!
+    }
+    
+    /**
+     * 
+     * @return string
+     */
+    public function getStateString()
+    {
+        return '';
+    }
 }

@@ -111,8 +111,6 @@ abstract class EksteraModel extends TestModel {
             $fileName = $itemRunnersDir . str_replace('X', $mapper->map($item['item']), self::ASSEMBLY_ITEMRUNNERS_FILENAME);
             $strServiceCall = $item['call']->serializeToString();
             file_put_contents($fileName, $strServiceCall);
-            
-            \common_Logger::i("Item Runner Service Call serialized into ${fileName}.");
         }
     }
 }
