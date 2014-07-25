@@ -17,5 +17,7 @@
  * Copyright (c) 2014 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  *
  */
+// This script is called at installation time to configure Ekstera's
+// Sliced Test Model.
 $ext = common_ext_ExtensionsManager::singleton()->getExtensionById('ekstera');
 $ext->setConfig('sliced.slice_size', 5);

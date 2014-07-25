@@ -28,17 +28,27 @@ use qtism\data\storage\xml\XmlDocument;
 use qtism\data\storage\xml\XmlStorageException;
 
 /**
+ * The RemoteItemMapper class is an implementation of ItemMapper consisting
+ * in mapping QTI items by using the qti:assessmentItem->identifier attribute.
+ * 
+ * This mapper demonstrates to what extent semantics about items is important. Without
+ * a common identifier attribute, multiple systems cannot agree on shared identifiers.
+ * 
+ * In conjunction with Korekton (an external Routing System) and/or GloomRAT (an external Scoring System) 
+ * which also understand QTI semantics, an agreement on shared identifiers is successfuly done with Ekstera.
  * 
  * @author Jérôme Bogaerts <jerome@taotesting.com>
- *
+ * 
+ * @see http://www.imsglobal.org/question/qtiv2p1/imsqti_infov2p1.html#element10012 IMS QTI 2.1 assessmentItem component.
  */
 class RemoteItemMapper implements ItemMapper {
     
     /**
+     * Ingest a given $item and return its qti:assessmentItem->identifier attribute.
      * 
      * @param core_kernel_classes_Resource $item An Item Resource to mapped into an identifier.
-     * @return string
-     * @throws \oat\ekstera\model\ItemMappingException If the item cannot be parsed correctly.
+     * @return string A QTI Identifier.
+     * @throws \oat\ekstera\model\ItemMappingException If the QTI item cannot be parsed correctly.
      */
     public function map(core_kernel_classes_Resource $item) 
     {

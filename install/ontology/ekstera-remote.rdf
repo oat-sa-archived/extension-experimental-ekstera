@@ -1,3 +1,8 @@
+<!-- 
+The Ontology definition of the Ekstera's Remote Test Model. This Test Model
+focuses on demonstrating the ability of TAO to use remote Routing and Scoring
+systems through RESTful web services.
+-->
 <rdf:RDF 
     xml:base="http://www.tao.lu/Ontologies/TAOTest.rdf#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -6,7 +11,7 @@
     <rdf:Description rdf:about="http://www.tao.lu/Ontologies/TAOTest.rdf#EksteraRemoteTestModel">
         <rdf:type rdf:resource="http://www.tao.lu/Ontologies/TAOTest.rdf#TestModel"/>
         <rdfs:label xml:lang="en-US">Ekstera Test (Remote)</rdfs:label>
-        <rdfs:comment xml:lang="en-US">A Proof of Concept IRT Test Model implementation, using dummy remote Routing and Scoring services through RESTful web services.</rdfs:comment>
+        <rdfs:comment xml:lang="en-US">A Proof of Concept Test Model implementation  which demonstrates the ability of TAO to use remote Routing and Scoring services through RESTful web services.</rdfs:comment>
         <test:TestModelImplementation>oat\ekstera\model\remote\RemoteModel</test:TestModelImplementation>
     </rdf:Description>
 </rdf:RDF>

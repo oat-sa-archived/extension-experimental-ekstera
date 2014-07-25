@@ -17,6 +17,8 @@
  * Copyright (c) 2014 (original work) Open Assessment Technologies SA (under the project TAO-PRODUCT);
  *
  */
+// This script is called at installation time to configure
+// The Ekstera's Remote Test Model.
 $ext = common_ext_ExtensionsManager::singleton()->getExtensionById('ekstera');
 $ext->setConfig('remote.routing_endpoint', 'http://gloomrat');
 $ext->setConfig('remote.routing_timeout', 30);

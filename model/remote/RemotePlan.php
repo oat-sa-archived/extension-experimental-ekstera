@@ -27,13 +27,17 @@ use tao_models_classes_service_StorageDirectory;
 use tao_models_classes_service_ServiceCall;
 
 /**
- * 
+ * The RemotePlan is an implementation of EksteraPlan aiming at ruling
+ * tests ran by a composition of software systems.
+ *
  * @author Jérôme Bogaerts <jerome@taotesting.com>
  *
  */
 class RemotePlan extends EksteraPlan
 {
     /**
+     * Instantiate an appropriate Route object aiming at providing
+     * the routing logic (external call to the GloomRAT service).
      * 
      * @return \oat\ekstera\model\remote\RemoteRoute
      */
@@ -43,6 +47,7 @@ class RemotePlan extends EksteraPlan
     }
     
     /**
+     * Restore a previously persisted RemoteRoute object.
      * 
      * @param string $stateString
      * @return \oat\ekstera\model\remote\RemoteRoute
@@ -53,19 +58,21 @@ class RemotePlan extends EksteraPlan
     }
     
     /**
+     * Persiste a previously instantiated RemoteRoute object.
      * 
      * @param \oat\ekstera\model\remote\RemoteRoute $route
      * @return string
      */
     public function persistRoute(Route $route)
     {
+        // There nothing to persist in this case. Indeed,
+        // the whole business logic, persistence, ... should
+        // be handled by the remote routing system.
         return '';
     }
     
     /**
-     * 
-     * @param string $itemIdentifier The identifier of the item you want to restore the Service Call definition.
-     * @return tao_models_classes_service_ServiceCall
+     * @see \oat\ekstera\model\EksteraPlan::restoreItemRunner()
      */
     public function restoreItemRunner($itemIdentifier)
     {
@@ -76,9 +83,7 @@ class RemotePlan extends EksteraPlan
     }
     
     /**
-     * Get the number of Items composing the Item Pool in use.
-     * 
-     * @return integer
+     * @see \oat\ekstera\model\EksteraPlan::getItemCount()
      */
     public function getItemCount()
     {
@@ -88,9 +93,7 @@ class RemotePlan extends EksteraPlan
     }
     
     /**
-     * Returns a PHP Code serialization of the RemotePlan. This representation
-     * will be stored in the compilation directory for lightning fast retrieval,
-     * using PHP's include() function.
+     * Return a the PHP source code to be evaluated to restore a RemotePlan object.
      * 
      * @return string
      */

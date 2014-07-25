@@ -1,3 +1,7 @@
+<!-- 
+The Ontology definition of the Ekstera's Sliced Test Model. This Test Model aims
+at demonstrating the ability of TAO to run Computer Adaptive Tests (CAT).
+-->
 <rdf:RDF 
     xml:base="http://www.tao.lu/Ontologies/TAOTest.rdf#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"

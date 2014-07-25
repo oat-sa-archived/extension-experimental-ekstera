@@ -24,6 +24,18 @@ use \oat\ekstera\model\EksteraModel;
 use tao_models_classes_service_StorageDirectory;
 
 /**
+ * Implementation of EksteraModel aiming at demonstrating the use of
+ * TAO in conjunction with remote Routing and Scoring systems through
+ * RESTful web services.
+ * 
+ * The RemoteModel is an implementation of EksteraModel aiming at ruling
+ * tests ran by a composition of software systems which are:
+ * 
+ * * TAO Platform, through the use of the Ekstera and Kutimo extensions.
+ * * Korekton, an experimental dummy RESTful web service aiming at scoring items.
+ * * GloomRAT, an experimental dummy RESTful web service aiming at selecting items to be taken by a candidate.
+ * 
+ * These 3 systems agree 'a priori' on an given Item Pool and QTI Item identifiers to work in harmony.
  * 
  * @author Jérôme Bogaerts <jerome@taotesting.com>
  *
@@ -31,17 +43,20 @@ use tao_models_classes_service_StorageDirectory;
 class RemoteModel extends EksteraModel {
 
     /**
+     * Instantiate a Plan object that rules a Remote Test.
      * 
      * @param tao_models_classes_service_StorageDirectory $directory
-     * @return oat\ekstera\model\remote\RemotePlan
+     * @return \oat\ekstera\model\remote\RemotePlan
      */
     protected function instantiateRoutingPlan(tao_models_classes_service_StorageDirectory $directory) {
         return new RemotePlan($directory);
     }
     
     /**
+     * Create an appropriate ItemMapper object aiming at reaching an agreement about
+     * shared item identifiers accross the multiple systems composing a Remote Test.
      * 
-     * @return oat\ekstera\model\remote\RemoteItemMapper
+     * @return \oat\ekstera\model\remote\RemoteItemMapper
      */
     protected function createItemMapper()
     {

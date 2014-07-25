@@ -82,10 +82,14 @@ class SlicedRoute extends Route
      * 
      * In this implementation, the $lastItemScore value is not taken into account for the selection of the next Item.
      * 
+     * @param string $sessionId
+     * @param string $candidateId
+     * @param string $lastItemId
+     * @param string $lastItemResponse
      * @param string $lastItemScore The score to the last Item taken by the candidate (optional for the first item to be taken).
      * @return string The identifier of the next item to be taken.
      */
-    public function getNextItem($lastItemScore = '')
+    public function getNextItem($sessionId, $candidateId, $lastItemId = '', $lastItemResponse = '', $lastItemScore = '')
     {
         $poolSize = $this->getPlan()->getItemCount();
         $sliceSize = $this->retrieveSliceSize();
@@ -106,17 +110,6 @@ class SlicedRoute extends Route
             
             return $itemId;
         }
-    }
-    
-    /**
-     * Get the string representing the internal state of this SlicedRoute object. This value
-     * will be used for persisting the test state.
-     * 
-     * @return string
-     */
-    public function getStateString()
-    {
-        return strval($this->getCurrentSlice());
     }
     
     /**

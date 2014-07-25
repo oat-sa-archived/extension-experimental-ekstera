@@ -26,19 +26,19 @@ $itemClass	= taoItems_models_classes_ItemsService::singleton()->getRootClass();
 // Defines possible pools.
 $files = array();
 $files['pool-integers-5-local.zip'] = $itemClass->createSubclass('Int 5 - Local');
-$files['pool-integers-5-dummy.zip'] = $itemClass->createSubclass('Int 5 - Dummy');
+$files['pool-integers-5-custom.zip'] = $itemClass->createSubclass('Int 5 - Custom');
 $files['pool-integers-5-remote.zip'] = $itemClass->createSubclass('Int 5 - Remote');
 $files['pool-integers-10-local.zip'] = $itemClass->createSubclass('Int 10 - Local');
-$files['pool-integers-10-dummy.zip'] = $itemClass->createSubclass('Int 10 - Dummy');
+$files['pool-integers-10-custom.zip'] = $itemClass->createSubclass('Int 10 - Custom');
 $files['pool-integers-10-remote.zip'] = $itemClass->createSubclass('Int 10 - Remote');
 $files['pool-integers-15-local.zip'] = $itemClass->createSubclass('Int 15 - Local');
-$files['pool-integers-15-dummy.zip'] = $itemClass->createSubclass('Int 15 - Dummy');
+$files['pool-integers-15-custom.zip'] = $itemClass->createSubclass('Int 15 - Custom');
 $files['pool-integers-15-remote.zip'] = $itemClass->createSubclass('Int 15 - Remote');
 $files['pool-integers-20-local.zip'] = $itemClass->createSubclass('Int 20 - Local');
-$files['pool-integers-20-dummy.zip'] = $itemClass->createSubclass('Int 20 - Dummy');
+$files['pool-integers-20-custom.zip'] = $itemClass->createSubclass('Int 20 - Custom');
 $files['pool-integers-20-remote.zip'] = $itemClass->createSubclass('Int 20 - Remote');
 $files['pool-integers-50-local.zip'] = $itemClass->createSubclass('Int 50 - Local');
-$files['pool-integers-50-dummy.zip'] = $itemClass->createSubclass('Int 50 - Dummy');
+$files['pool-integers-50-custom.zip'] = $itemClass->createSubclass('Int 50 - Custom');
 $files['pool-integers-50-remote.zip'] = $itemClass->createSubclass('Int 50 - Remote');
 
 $testModels = array(
@@ -62,7 +62,7 @@ foreach ($files as $file => $clazz) {
         // for all available ekstera test models.
         foreach ($testModels as $testModel)
         {
-            $irtTestContentResource = $irtTestContentClass->createInstance('IRT Test Content');
+            $irtTestContentResource = $irtTestContentClass->createInstance('Ekstera Test Content');
             $testResource = $testClass->createInstance(ucfirst(str_replace('.zip', '', $file)) . ' - ' . $testModel[0]);
             $testResource->setPropertyValue($testContentProperty, $irtTestContentResource);
             $testResource->setPropertyValue($testModelProperty, $testModel[1]);
